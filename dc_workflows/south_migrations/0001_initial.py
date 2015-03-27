@@ -26,7 +26,6 @@ class Migration(SchemaMigration):
         # Adding model 'StageTransition'
         db.create_table(u'dc_workflows_stagetransition', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('workflow', self.gf('django.db.models.fields.related.ForeignKey')(related_name='transitions', to=orm['dc_workflows.Workflow'])),
             ('source', self.gf('django.db.models.fields.related.ForeignKey')(related_name='outbound_transitions', to=orm['dc_workflows.Stage'])),
             ('target', self.gf('django.db.models.fields.related.ForeignKey')(related_name='inbound_transitions', to=orm['dc_workflows.Stage'])),
         ))
@@ -55,8 +54,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'StageTransition'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'source': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'outbound_transitions'", 'to': u"orm['dc_workflows.Stage']"}),
-            'target': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'inbound_transitions'", 'to': u"orm['dc_workflows.Stage']"}),
-            'workflow': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'transitions'", 'to': u"orm['dc_workflows.Workflow']"})
+            'target': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'inbound_transitions'", 'to': u"orm['dc_workflows.Stage']"})
         },
         u'dc_workflows.workflow': {
             'Meta': {'object_name': 'Workflow'},
