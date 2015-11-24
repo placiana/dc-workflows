@@ -2,9 +2,11 @@
 
 from __future__ import unicode_literals
 
-from autoregister_models import autoregister
+from django.contrib import admin
+
+from models import Workflow, Stage, StageTransition
 
 
-
-# Register all models of this app.
-autoregister('dc_workflows')
+admin.site.register(Workflow)
+admin.site.register(Stage)
+admin.site.register(StageTransition)
