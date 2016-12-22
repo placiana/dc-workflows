@@ -9,7 +9,7 @@ from django.db import models
 class Workflow(models.Model):
     name = models.CharField('Nombre', max_length=200)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class Stage(models.Model):
@@ -20,7 +20,7 @@ class Stage(models.Model):
         verbose_name = 'stage'
         verbose_name_plural = 'stages'
         
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -32,6 +32,6 @@ class StageTransition(models.Model):
         verbose_name = 'stage transition'
         verbose_name_plural = 'stage transitions'
 
-    def __unicode__(self):
+    def __str__(self):
         return u'{s} -> {t}'.format(s=self.source.name, t=self.target.name)
 
