@@ -26,8 +26,8 @@ class Migration(migrations.Migration):
             name='StageTransition',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('source', models.ForeignKey(related_name='outbound_transitions', verbose_name=b'source stage', to='dc_workflows.Stage')),
-                ('target', models.ForeignKey(related_name='inbound_transitions', verbose_name=b'target stage', to='dc_workflows.Stage')),
+                ('source', models.ForeignKey(related_name='outbound_transitions', verbose_name=b'source stage', to='dc_workflows.Stage', on_delete=models.CASCADE)),
+                ('target', models.ForeignKey(related_name='inbound_transitions', verbose_name=b'target stage', to='dc_workflows.Stage', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'stage transition',
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='stage',
             name='workflow',
-            field=models.ForeignKey(related_name='stages', to='dc_workflows.Workflow'),
+            field=models.ForeignKey(related_name='stages', to='dc_workflows.Workflow', on_delete=models.CASCADE),
             preserve_default=True,
         ),
     ]

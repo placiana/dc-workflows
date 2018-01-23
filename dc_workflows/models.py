@@ -13,7 +13,7 @@ class Workflow(models.Model):
         return self.name
 
 class Stage(models.Model):
-    workflow = models.ForeignKey('Workflow', related_name="stages")
+    workflow = models.ForeignKey('Workflow', related_name="stages", on_delete=models.CASCADE)
     name = models.CharField('Nombre', max_length=200)
 
     class Meta:
@@ -25,8 +25,8 @@ class Stage(models.Model):
 
 
 class StageTransition(models.Model):
-    source = models.ForeignKey('Stage', verbose_name="source stage", related_name='outbound_transitions')
-    target = models.ForeignKey('Stage', verbose_name="target stage", related_name='inbound_transitions')
+    source = models.ForeignKey('Stage', verbose_name="source stage", related_name='outbound_transitions', on_delete=models.CASCADE)
+    target = models.ForeignKey('Stage', verbose_name="target stage", related_name='inbound_transitions', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'stage transition'
